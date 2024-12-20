@@ -12,13 +12,18 @@ pipeline {
                     sh 'sudo apt-get update'
                     sh 'sudo apt-get upgrade -y'
 
-                    // Install Docker if not already installed
+                    // Install required dependencies for Docker
                     sh '''
-                        sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-                        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-                        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+                        sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common lsb-release
+                        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/docker.asc
+                        sudo echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
                         sudo apt-get update
+                    '''
+
+                    // Install Docker and Docker Compose
+                    sh '''
                         sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+                        sudo apt-get install -y docker-compose
                     '''
 
                     // Check Docker version
