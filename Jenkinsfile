@@ -1,43 +1,46 @@
 pipeline {
     agent any
-    
-    stages {
 
+    stages {
         stage('Build') {
             steps {
                 script {
-                    sh 'apt-get update'
-                    sh 'apt-get upgrade -y'
-
+                    // Install necessary dependencies for Docker Compose, if not installed
                     sh '''
-                       
-                        docker compose version
-                        '''
-                    
+                        apt-get update
+                        apt-get upgrade -y
+                        apt-get install -y python3 python3-venv python3-pip docker-compose
+                    '''
+
+                    // Check Docker Compose version
+                    sh 'docker compose version'
                 }
             }
         }
+
         stage('Test') {
             steps {
                 script {
-
-                    sh 'apt-get update'
-                    sh 'apt-get upgrade -y'
-                    sh '''
-                        docker compose version
-                        docker compose up -d
-                        '''
-
-                    sh 'apt-get install -y python3 python3-venv python3-pip'
-
+                    // Set up Python virtual environment and install dependencies
                     sh '''
                         python3 -m venv .venv
-                        . .venv/bin/activate
+                        source .venv/bin/activate
                         pip install pytest selenium
+                    '''
 
-                        sleep 15
-                        python test_devopstest.py
-                        '''
+                    // Start Docker containers using Docker Compose
+                    sh 'docker compose up -d'
+
+                    // Allow some time for the containers to spin up
+                    sleep 15
+
+                    // Run tests using pytest
+                    sh '''
+                        python -m pytest test_devopstest.py
+                    '''
+
+                    // Optionally stop and clean up Docker containers
+                    sh 'docker compose down'
                 }
             }
         }
