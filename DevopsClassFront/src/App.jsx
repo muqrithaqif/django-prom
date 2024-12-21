@@ -48,7 +48,7 @@ function App() {
             placeholder="Enter name"
             required
           />
-          <button type="submit">Add Name</button>
+          <button type="submit">Add Nameeeee</button>
         </form>
       </div>
       <div className="table-container">
