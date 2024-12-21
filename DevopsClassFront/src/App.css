@@ -41,12 +41,6 @@
   color: #888;
 }
 
-.App {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
 .form-container,
 .table-container {
   width: 45%;

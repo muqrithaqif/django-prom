@@ -34,14 +34,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="row">
-        <div className="col-12">
-          <h1>Topi Putih</h1>
-        </div>
-      </div>
-      <div className="form-container">
-        <h2>Add Name For New Devops Student</h2>
+    <div className="App row justify-content-around">
+      <div className="col-12 mb-5"><h1><i class="fas fa-hat-cowboy"></i> We Are Topi Putih</h1></div>
+      <div className=" col-5">
+        <h2>Add Name For Comer</h2>
         <form onSubmit={handleAddName}>
           <input
             type="text"
@@ -53,7 +49,7 @@ function App() {
           <button type="submit">Add Name</button>
         </form>
       </div>
-      <div className="table-container">
+      <div className="col-5">
         <h2>Saved Names</h2>
         <table>
           <thead>
@@ -72,7 +68,7 @@ function App() {
               ))
             ) : (
               <tr>
-                <td colSpan="2">No names saved</td>
+                <td colSpan="3">No names saved</td>
               </tr>
             )}
           </tbody>
