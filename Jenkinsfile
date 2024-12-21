@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     stages {
-
         stage('Setup Environment') {
             steps {
                 script {
@@ -33,11 +32,13 @@ pipeline {
                     sh '''
                         python3 -m venv .venv
                         . .venv/bin/activate
+                        pip install --upgrade pip
                         pip install pytest selenium
                     '''
 
-                    // Run tests using python3
+                    // Run tests in the virtual environment
                     sh '''
+                        . .venv/bin/activate
                         sleep 15  # Wait for the app to initialize
                         python3 test_devopstest.py
                     '''
