@@ -24,8 +24,8 @@ pipeline {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
                     sh '''
-                        docker compose version
-                        docker compose up -d
+                        docker-compose version
+                        docker-compose up -d
                         '''
 
                     sh 'apt-get install -y python3 python3-venv python3-pip'
