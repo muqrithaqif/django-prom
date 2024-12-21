@@ -35,6 +35,9 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <h1>Topi Putih</h1>
+      </div>
       <div className="form-container">
         <h2>Add Name For New Devops Student</h2>
         <form onSubmit={handleAddName}>
