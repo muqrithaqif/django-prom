@@ -44,7 +44,7 @@ services:
     networks:
       - mynetwork  
     volumes:
-      - ./DevopsClassFront/dist:/usr/share/nginx/html/custom-folder
+      - /home/arman/shared:/usr/share/nginx/html
 
 networks:
   mynetwork:

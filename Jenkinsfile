@@ -12,6 +12,8 @@ pipeline {
                     sh '''
                        
                         docker compose version
+                        mkdir -p /shared/frontend
+                        cp -r ./DevopsClassFront/dist/* /shared/frontend/
                         '''
                     
                 }
