@@ -33,6 +33,11 @@ function App() {
     }
   };
 
+  // Function to handle removing a name
+  const handleRemoveName = (id) => {
+    setSavedNames(savedNames.filter((name) => name.id !== id));
+  };
+
   return (
     <div className="App row justify-content-around">
       <div className="col-12 mb-5"><h1><i class="fas fa-hat-cowboy"></i> We Are Topi Putih</h1></div>
@@ -68,7 +73,7 @@ function App() {
               ))
             ) : (
               <tr>
-                <td colSpan="3">No names saved</td>
+                <td colSpan="2">No names saved</td>
               </tr>
             )}
           </tbody>
