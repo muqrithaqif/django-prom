@@ -35,8 +35,10 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h1>Topi Putih</h1>
+      <div className="row">
+        <div className="col-12">
+          <h1>Topi Putih</h1>
+        </div>
       </div>
       <div className="form-container">
         <h2>Add Name For New Devops Student</h2>
@@ -48,7 +50,7 @@ function App() {
             placeholder="Enter name"
             required
           />
-          <button type="submit">Add Nameeeee</button>
+          <button type="submit">Add Name</button>
         </form>
       </div>
       <div className="table-container">
