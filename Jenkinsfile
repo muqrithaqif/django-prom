@@ -15,7 +15,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build the Docker image for your Django app
                     sh '''
                     docker-compose version
                     docker-compose build
@@ -27,7 +26,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Run the application in detached mode
+                    // Start the application
                     sh 'docker-compose up -d'
 
                     // Set up Python virtual environment and install test dependencies
@@ -37,13 +36,13 @@ pipeline {
                         pip install pytest selenium
                     '''
 
-                    // Run tests
+                    // Run tests using python3
                     sh '''
                         sleep 15  # Wait for the app to initialize
-                        python test_devopstest.py
+                        python3 test_devopstest.py
                     '''
 
-                    // Stop the application after tests
+                    // Stop the application
                     sh 'docker-compose down'
                 }
             }
@@ -52,10 +51,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    // Restart the app in detached mode for production
-                    sh '''
-                        docker-compose up -d
-                    '''
+                    sh 'docker-compose up -d'
                 }
             }
         }
