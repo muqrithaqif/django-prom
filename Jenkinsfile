@@ -2,57 +2,42 @@ pipeline {
     agent any
     
     stages {
-        stage('Setup Environment') {
+
+        stage('Build') {
             steps {
                 script {
                     sh 'apt-get update'
-                    sh 'apt-get install -y docker.io docker-compose python3 python3-venv python3-pip'
-                }
-            }
-        }
+                    sh 'apt-get upgrade -y'
 
-        stage('Build Docker Image') {
-            steps {
-                script {
                     sh '''
-                    docker-compose version
-                    docker-compose build
-                    '''
+                       
+                        docker compose version
+                        '''
+                    
                 }
             }
         }
-
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 script {
-                    // Start the application
-                    sh 'docker-compose up -d'
 
-                    // Set up Python virtual environment and install test dependencies
+                    sh 'apt-get update'
+                    sh 'apt-get upgrade -y'
+                    sh '''
+                        docker compose version
+                        docker compose up -d
+                        '''
+
+                    sh 'apt-get install -y python3 python3-venv python3-pip'
+
                     sh '''
                         python3 -m venv .venv
                         . .venv/bin/activate
-                        pip install --upgrade pip
                         pip install pytest selenium
-                    '''
 
-                    // Run tests in the virtual environment
-                    sh '''
-                        . .venv/bin/activate
-                        sleep 15  # Wait for the app to initialize
-                        python3 test_devopstest.py
-                    '''
-
-                    // Stop the application
-                    sh 'docker-compose down'
-                }
-            }
-        }
-
-        stage('Deploy Application') {
-            steps {
-                script {
-                    sh 'docker-compose up -d'
+                        sleep 15
+                        python test_devopstest.py
+                        '''
                 }
             }
         }
