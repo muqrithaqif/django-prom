@@ -12,4 +12,4 @@ services:
     volumes:
       - /home/arman/jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/arman/shared/frontend:/shared
+      - /home/arman/shared:/shared
