@@ -44,7 +44,7 @@ services:
     networks:
       - mynetwork  
     volumes:
-      - ./DevopsClassFront/dist:/usr/share/nginx/html
+      - C:\Users\user\Documents\Programming\repo\django-prom\DevopsClassFront\dist:/usr/share/nginx/html
 
 networks:
   mynetwork:
