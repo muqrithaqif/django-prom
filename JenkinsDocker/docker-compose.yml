@@ -10,6 +10,8 @@ services:
       - 50000:50000
     container_name: jenkins
     volumes:
-      - /home/arman/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/arman/shared:/shared
+      
+volumes:
+  jenkins_configuration:
