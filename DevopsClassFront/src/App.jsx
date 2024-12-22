@@ -41,8 +41,8 @@ function App() {
   return (
     <div className="App row justify-content-around">
       <div className="col-12 mb-5"><h1><i class="fas fa-hat-cowboy"></i> We Are Topi Putih</h1></div>
-      <div className=" col-5">
-        <h2>Add Name For New Student</h2>
+      <div className="col-5">
+        <h2 className="pulse-text pb-3 fw-bold">Add Name For New Student</h2>
         <form onSubmit={handleAddName}>
           <input
             type="text"
