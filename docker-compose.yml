@@ -44,7 +44,10 @@ services:
     networks:
       - mynetwork  
     volumes:
-      - /home/arman/shared/html:/usr/share/nginx/html
+      - shared_html:/usr/share/nginx/html
+      
+volumes:
+  shared_html:
 
 networks:
   mynetwork:
