@@ -12,6 +12,7 @@ Before you begin, ensure you have the following installed on your system:
 - [Docker](https://www.docker.com/) (Docker Desktop for Windows/Mac or Docker Engine for Linux)
 - [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop)
 - Python 3.8 or later (for Django-related tasks outside the container, if needed)
+- [Node](https://nodejs.org/en)
 - Git (to clone the repository)
 
 ---
