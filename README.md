@@ -23,7 +23,7 @@ Follow these steps to set up the environment:
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository_url>
+   git clone <[repository_url](https://github.com/muqrithaqif/django-prom)>
    cd <repository_directory>
    ```
 
