@@ -1,9 +1,16 @@
 pipeline {
     agent any
+
+    parameters {
+        booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage?')
+    }
     
     stages {
 
         stage('Build') {
+            when {
+                expression { !params.SKIP_BUILD }
+            }
             steps {
                 script {
                     sh 'apt-get update'
